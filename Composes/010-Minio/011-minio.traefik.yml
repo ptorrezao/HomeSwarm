@@ -1,0 +1,46 @@
+version: '3.3'
+
+services:
+  minio1:
+    networks:
+      - traefik_net
+    deploy:
+      labels:
+        - traefik.docker.network=traefik_net
+        - "traefik.frontend.rule=Host:minio.${TARGET_DOMAIN}"
+        - traefik.port=9000
+        - traefik.protocol=http
+        - traefik.backend=minio
+  minio2:
+    networks:
+      - traefik_net
+    deploy:
+      labels:
+        - traefik.docker.network=traefik_net
+        - "traefik.frontend.rule=Host:minio.${TARGET_DOMAIN}"
+        - traefik.port=9000
+        - traefik.protocol=http
+        - traefik.backend=minio
+  minio3:
+    networks:
+      - traefik_net
+    deploy:
+      labels:
+        - traefik.docker.network=traefik_net
+        - "traefik.frontend.rule=Host:minio.${TARGET_DOMAIN}"
+        - traefik.port=9000
+        - traefik.protocol=http
+        - traefik.backend=minio
+  minio4:
+    networks:
+      - traefik_net
+    deploy:
+      labels:
+        - traefik.docker.network=traefik_net
+        - "traefik.frontend.rule=Host:minio.${TARGET_DOMAIN}"
+        - traefik.port=9000
+        - traefik.protocol=http
+        - traefik.backend=minio
+networks:
+  traefik_net:
+    external: true
