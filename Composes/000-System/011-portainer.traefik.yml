@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  portainer:
+    networks:
+      - traefik_net
+    deploy:
+      labels:
+        - traefik.docker.network=traefik_net
+        - "traefik.frontend.rule=Host:portainer.${TARGET_DOMAIN}"
+        - traefik.port=9000
+        - traefik.protocol=http
+        - traefik.backend=portainer
+networks:
+  traefik_net:
+    external: true
