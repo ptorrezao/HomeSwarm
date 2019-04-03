@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+   web:
+     image: darron1217/docker-nginx-php-git:php7
+     volumes:
+       - web:/var/www/html
+     ports:
+       - 6804:80
+
+volumes:
+    web:
+      name: my-app-data
+      driver: rexray/s3fs
+      driver_opts:
+        accessKey: ${MINIO_ACCESS_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
+        endpoint: ${MINIO_URL}
+        disablePathStyle: "false"
+        options: "url=${MINIO_URL},allow_other,use_path_request_style,nonempty"

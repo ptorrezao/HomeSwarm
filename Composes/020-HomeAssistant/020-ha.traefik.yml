@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  web:
+    networks:
+      - traefik_net
+    deploy:
+      labels:
+        - traefik.docker.network=traefik_net
+        - "traefik.frontend.rule=Host:web.${TARGET_DOMAIN}"
+        - traefik.port=80
+        - traefik.protocol=http
+        - traefik.backend=web
+networks:
+  traefik_net:
+    external: true
