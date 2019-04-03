@@ -3,6 +3,8 @@
 ENV_FILE=".env"
 for i in $(cat "$ENV_FILE") ; do export  $i; done
 
+
+
 for i in Composes/*
 do
     FILES="";
